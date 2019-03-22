@@ -13,6 +13,9 @@
 
     <ion-item *ngFor="let p of posts">
       <ion-label slot="start">{{p.payload.doc.data().Title}}</ion-label>
+      <ion-button fill="clear" slot="end" (click)="edit(p)">
+        <ion-icon name="create" size="large"></ion-icon>
+      </ion-button>
       <ion-button fill="clear" slot="end" (click)="preview(p)">
         <ion-icon name="eye" size="large"></ion-icon>
       </ion-button>

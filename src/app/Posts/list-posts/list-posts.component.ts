@@ -36,6 +36,9 @@ export class ListPostsComponent implements OnInit {
   preview(p) {
     window.open(`preview-post/${p.payload.doc.id}`);
   }
+  edit(p) {
+    window.open(`edit-post/${p.payload.doc.id}`);
+  }
 
   // deleteCat(data) {
   //   this.postsSer.(data);
