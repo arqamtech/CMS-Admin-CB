@@ -1,0 +1,9 @@
+<form [formGroup]="this.postsSer.newPost" (ngSubmit)="onSubmit(form)">
+
+  <ion-item>
+    <ion-input type="text" placeholder="Enter a Post Title" autofocus formControlName="Title"></ion-input>
+  </ion-item>
+  <ion-button type="submit">
+    Add Post
+  </ion-button>
+</form>

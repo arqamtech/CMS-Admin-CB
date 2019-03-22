@@ -1,0 +1,12 @@
+<ion-list>
+  <ion-list-header>
+    <ion-label>Tags</ion-label>
+  </ion-list-header>
+  <app-add-tags></app-add-tags>
+  <ion-item *ngFor="let t of tags" lines="none">
+    <ion-label slot="start">{{t.payload.doc.data().Name}}</ion-label>
+    <ion-button fill="clear" slot="end" (click)="deleteTag(t)">
+      <ion-icon name="trash" size="large" color="danger"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-list>

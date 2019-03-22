@@ -1,0 +1,21 @@
+<ion-content>
+  <ion-button *ngIf="!viewAdd" (click)="toggleAddPost()">Add Post</ion-button>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Posts</ion-label>
+    </ion-list-header>
+
+    <ion-item *ngIf="viewAdd">
+      <app-add-post></app-add-post>
+      <ion-button (click)="toggleAddPost()" color="light">Cancel</ion-button>
+    </ion-item>
+
+    <ion-item *ngFor="let p of posts">
+      <ion-label slot="start">{{p.payload.doc.data().Title}}</ion-label>
+      <ion-button fill="clear" slot="end" (click)="preview(p)">
+        <ion-icon name="eye" size="large"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

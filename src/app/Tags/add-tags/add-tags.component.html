@@ -1,0 +1,19 @@
+<form [formGroup]="this.tagSer.newTag" (ngSubmit)="onSubmit(form)">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="10">
+        <ion-item>
+          <!-- <ion-label position="floating">Name</ion-label> -->
+          <ion-input type="text" placeholder="Tag Name" autofocus formControlName="Name"></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="2">
+        <ion-button type="submit">
+          Add Tag
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>

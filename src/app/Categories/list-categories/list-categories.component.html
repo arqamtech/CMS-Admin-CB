@@ -1,0 +1,12 @@
+<ion-list >
+  <ion-list-header>
+    <ion-label>Categories</ion-label>
+  </ion-list-header>
+  <app-add-categories></app-add-categories>
+  <ion-item *ngFor="let c of cats" lines="none" >
+    <ion-label slot="start">{{c.payload.doc.data().Name}}</ion-label>
+    <ion-button fill="clear" slot="end" (click)="deleteCat(c)">
+      <ion-icon name="trash" size="large" color="danger"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-list>

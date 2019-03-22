@@ -1,0 +1,14 @@
+<form [formGroup]="this.catSer.newCategory" (ngSubmit)="onSubmit(form)">
+
+  <ion-grid>
+    <ion-row>
+      <ion-item>
+        <!-- <ion-label position="floating">Name</ion-label> -->
+        <ion-input type="text" placeholder="Category Name" autofocus formControlName="Name"></ion-input>
+      </ion-item>
+      <ion-button type="submit">
+        Add Category
+      </ion-button>
+    </ion-row>
+  </ion-grid>
+</form>
