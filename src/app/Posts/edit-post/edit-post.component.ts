@@ -15,7 +15,7 @@ export class EditPostComponent implements OnInit {
 
   postId;
   cPost;
-  cats;
+  cats: Array<any> = [];
   tags;
 
   viewAddCat: boolean = false;
@@ -46,10 +46,19 @@ export class EditPostComponent implements OnInit {
     this.postServ
       .getPost(this.postId)
       .subscribe(res => (this.cPost = res.data()));
-  getCats = () =>
-    this.catSer
-      .getCategories()
-      .subscribe(res => (this.cats = res));
+
+
+  getCats() {
+    this.db.collection("Categories").snapshotChanges().subscribe(snap => {
+      snap.forEach(snip => {
+        let temp: any = snip.payload.doc.data();
+        temp.id = snip.payload.doc.id;
+        temp.Check = false;
+        this.cats.push(temp);
+      })
+    })
+  }
+
 
   getTags = () =>
     this.tagSer
@@ -58,9 +67,23 @@ export class EditPostComponent implements OnInit {
 
 
   toggleAddCat() {
-    this.viewAddTag = !this.viewAddTag;
-  }
-  toggleAddTag() {
     this.viewAddCat = !this.viewAddCat;
   }
+  toggleAddTag() {
+    this.viewAddTag = !this.viewAddTag;
+  }
+
+  catsCheck(c) {
+    c.Check = !c.Check;
+
+    if (c.Check) {
+      this.postServ.addCat(this.postId, c.id)
+    } else {
+      this.postServ.rmCat(this.postId, c.id)
+    }
+
+    console.log(c);
+
+  }
+
 }

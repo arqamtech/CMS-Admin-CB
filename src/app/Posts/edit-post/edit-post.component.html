@@ -4,6 +4,8 @@
       <ion-col size="9" style="border  :1px solid red;">
         <h4>Title : {{cPost.Title}}</h4>
         <p>Status : {{cPost.Status}}</p>
+
+
       </ion-col>
 
       <ion-col size="3">
@@ -12,10 +14,8 @@
         <ion-content style="height : 200px;">
           <ion-row>
             <ion-item *ngFor="let c of cats">
-              <ion-checkbox slot="start"></ion-checkbox>
-              <p slot="start">
-                {{c.payload.doc.data().Name}}
-              </p>
+              <ion-checkbox slot="start" ng-model="c.Check" [checked]="c.Check" (ionChange)="catsCheck(c)"></ion-checkbox>
+              <p slot="start">{{c.Name}}</p>
             </ion-item><br>
           </ion-row>
         </ion-content>

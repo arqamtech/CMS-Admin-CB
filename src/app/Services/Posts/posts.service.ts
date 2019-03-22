@@ -54,4 +54,17 @@ export class PostsService {
       .doc(id)
       .set({ Status: "Draft" }, { merge: true });
   }
+  addCat(postId, catId) {
+    return this.firestore
+      .collection("Posts")
+      .doc(postId).collection("Categories").doc(catId)
+      .set(true, { merge: true });
+  }
+  rmCat(postId, catId) {
+    return this.firestore
+      .collection("Posts")
+      .doc(postId).collection("Categories").doc(catId)
+      .delete();
+  }
+
 }
